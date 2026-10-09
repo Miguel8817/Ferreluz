@@ -1,0 +1,10 @@
+/* Estilos específicos para la página de Ventas (ventas.php) */
+
+.sales-box {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    max-width: 600px;
+}

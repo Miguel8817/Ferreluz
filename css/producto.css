@@ -1,0 +1,10 @@
+/* Estilos específicos para la página de Productos (producto.php) */
+
+.product-form-container {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}

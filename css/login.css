@@ -1,0 +1,30 @@
+/* Estilos específicos para la página de Iniciar Sesión (login.php) */
+
+.auth-box {
+    max-width: 450px;
+    margin: 50px auto;
+    padding: 25px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.auth-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-links {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.auth-links a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
