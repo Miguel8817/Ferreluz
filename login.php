@@ -13,9 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario  = trim($_POST['usuario'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    // Permite iniciar sesión tanto con el nombre de usuario como con el correo
-    $stmt = $pdo->prepare("SELECT id, nombre, usuario, password_hash, rol FROM usuarios WHERE usuario = ? OR correo = ? LIMIT 1");
-    $stmt->execute([$usuario, $usuario]);
+    // Permite iniciar sesión con usuario o correo (si existe la columna correo)
+    try {
+        $stmt = $pdo->prepare("SELECT id, nombre, usuario, password_hash, rol FROM usuarios WHERE usuario = ? OR correo = ? LIMIT 1");
+        $stmt->execute([$usuario, $usuario]);
+    } catch (PDOException $e) {
+        $stmt = $pdo->prepare("SELECT id, nombre, usuario, password_hash, rol FROM usuarios WHERE usuario = ? LIMIT 1");
+        $stmt->execute([$usuario]);
+    }
     $user = $stmt->fetch();
 
     if ($user && password_verify($password, $user['password_hash'])) {
