@@ -45,6 +45,18 @@ CREATE TABLE IF NOT EXISTS detalle_ventas (
     cantidad INT NOT NULL,
     precio_unitario DECIMAL(10,2) NOT NULL,
     subtotal DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (venta_id) REFERENCES ventas(id) ON DELETE CASCADE,
-    FOREIGN KEY (producto_id) REFERENCES productos(id) ON DELETE CASCADE
+    FOREIGN KEY (venta_id) REFERENCES ventas(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 5. Tabla de Proveedores
+CREATE TABLE IF NOT EXISTS proveedores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    rnc_cedula VARCHAR(20) NOT NULL UNIQUE,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20) NOT NULL,
+    email VARCHAR(100),
+    direccion VARCHAR(255),
+    contacto_nombre VARCHAR(100),
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+

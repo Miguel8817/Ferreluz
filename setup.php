@@ -28,6 +28,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $check === 0) {
         $insert->execute($p);
     }
 
+    $proveedores = [
+        ['101000123', 'Distribuidora Ferretera Nacional', '809-555-0101', 'ventas@ferretera.do', 'Av. John F. Kennedy #12, Santo Domingo', 'Ing. Carlos Mendoza'],
+        ['130987654', 'Suministros Eléctricos del Caribe', '809-555-0202', 'contacto@secaribe.com', 'Av. 27 de Febrero #88, Santiago', 'Lic. Maria Rodriguez']
+    ];
+
+    $insertProv = $pdo->prepare("INSERT INTO proveedores (rnc_cedula, nombre, telefono, email, direccion, contacto_nombre) VALUES (?, ?, ?, ?, ?, ?)");
+    foreach ($proveedores as $pr) {
+        $insertProv->execute($pr);
+    }
+
     $mensaje = 'Configuración completada. Ya puedes iniciar sesión.';
     $check   = 2;
 }

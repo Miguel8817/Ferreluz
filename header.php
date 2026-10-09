@@ -27,6 +27,7 @@
             <li><a href="index.php" class="<?= ($active ?? '') === 'inicio' ? 'activo' : '' ?>">Inicio</a></li>
             <li><a href="inventario.php" class="<?= ($active ?? '') === 'inventario' ? 'activo' : '' ?>">Inventario</a></li>
             <li><a href="ventas.php" class="<?= ($active ?? '') === 'ventas' ? 'activo' : '' ?>">Ventas</a></li>
+            <li><a href="proveedores.php" class="<?= ($active ?? '') === 'proveedores' ? 'activo' : '' ?>">Proveedores</a></li>
             <?php if (($_SESSION['rol'] ?? '') === 'admin'): ?>
                 <li><a href="usuarios.php" class="<?= ($active ?? '') === 'usuarios' ? 'activo' : '' ?>">Usuarios</a></li>
             <?php endif; ?>
