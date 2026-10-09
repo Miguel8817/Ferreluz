@@ -1,19 +1,30 @@
 <?php
 #Estos son los datos para conectar la base de datos
-$host = 'localhost';
-$db   = 'ferreluz';
-$user = 'root';
-$pass = '';
+# Obtener variables de entorno (Railway / producción) o usar defaults locales
+$host = getenv('MYSQLHOST') ?: getenv('DB_HOST') ?: 'localhost';
+$port = getenv('MYSQLPORT') ?: getenv('DB_PORT') ?: '3306';
+$db   = getenv('MYSQLDATABASE') ?: getenv('DB_NAME') ?: 'ferreluz';
+$user = getenv('MYSQLUSER') ?: getenv('DB_USER') ?: 'root';
+$pass = getenv('MYSQLPASSWORD') !== false ? getenv('MYSQLPASSWORD') : (getenv('DB_PASS') !== false ? getenv('DB_PASS') : '');
 
-#Esto es para la conexion y si falla tambien
+# En caso de que se use DATABASE_URL de Railway
+if (getenv('DATABASE_URL')) {
+    $dbUrl = parse_url(getenv('DATABASE_URL'));
+    $host = $dbUrl['host'] ?? $host;
+    $port = $dbUrl['port'] ?? $port;
+    $user = $dbUrl['user'] ?? $user;
+    $pass = $dbUrl['pass'] ?? $pass;
+    $db   = ltrim($dbUrl['path'] ?? '', '/') ?: $db;
+}
+
+# Conexión a la base de datos
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass, [
+    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$db;charset=utf8mb4", $user, $pass, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
 } catch (PDOException $e) {
-    die("Error de conexión: " . $e->getMessage());
-    
+    die("Error de conexión a la base de datos: " . $e->getMessage());
 }
 
 session_start();

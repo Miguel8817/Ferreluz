@@ -2,6 +2,8 @@
 #Para traer la conexion a mysql
 require __DIR__ . '/config.php';
 
+
+
 $check   = (int) $pdo->query("SELECT COUNT(*) FROM usuarios")->fetchColumn();
 $mensaje = '';
 
