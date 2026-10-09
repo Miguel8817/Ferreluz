@@ -1,0 +1,5 @@
+[providers]
+providers = ["php"]
+
+[php]
+aptPackages = ["php-pdo", "php-mysql"]
