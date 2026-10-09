@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 <footer>
-    <p>&copy; <?= date('Y') ?> Ferreluz S.R.L. - Desarrollado por Estudiante</p>
+    <p>&copy; <?= date('Y') ?> Ferreluz S.R.L. - Desarrollado por Eilin</p>
 </footer>
 
 </body>

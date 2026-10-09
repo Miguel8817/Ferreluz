@@ -108,7 +108,7 @@ require __DIR__ . '/header.php';
 </table>
 
 <footer>
-    <p>&copy; <?= date('Y') ?> Ferreluz S.R.L. - Sistema de Gestión | Desarrollado por Estudiante</p>
+    <p>&copy; <?= date('Y') ?> Ferreluz S.R.L. - Sistema de Gestión | Desarrollado por Eilin</p>
 </footer>
 
 </div> <!-- Cierre de container -->
