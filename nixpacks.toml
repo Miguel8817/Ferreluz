@@ -3,3 +3,6 @@ providers = ["php"]
 
 [php]
 aptPackages = ["php-pdo", "php-mysql"]
+
+[start]
+cmd = "php -S 0.0.0.0:${PORT:-8080}"
